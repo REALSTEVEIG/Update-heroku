@@ -1,0 +1,130 @@
+openapi: 3.0.0
+info:
+  title: Books Directory
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://books-directory-1.herokuapp.com/api/v1
+  variables: {}
+paths:
+  /books:
+    post:
+      tags:
+      - books
+      summary: Create Book
+      operationId: CreateBook
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBookRequest'
+            example:
+              author: Charles Bukowski
+              title: Ham on rye
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    get:
+      tags:
+      - books
+      summary: Get All Books
+      operationId: GetAllBooks
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /books/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The user ID
+    get:
+      tags:
+      - books
+      summary: Get A Book
+      operationId: GetABook
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+
+    patch:
+      tags:
+      - books
+      summary: Update Book
+      operationId: UpdateBook
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBookRequest'
+            example:
+              author: Chimamanda Adichie
+              title: Dear Ijeawele
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+
+    delete:
+      tags:
+      - books
+      summary: Delete Book
+      operationId: DeleteBook
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    CreateBookRequest:
+      title: CreateBookRequest
+      required:
+      - author
+      - title
+      type: object
+      properties:
+        author:
+          type: string
+        title:
+          type: string
+      example:
+        author: Charles Bukowski
+        title: Ham on rye
+    UpdateBookRequest:
+      title: UpdateBookRequest
+      required:
+      - author
+      - title
+      type: object
+      properties:
+        author:
+          type: string
+        title:
+          type: string
+      example:
+        author: Chimamanda Adichie
+        title: Dear Ijeawele
+tags:
+- name: Misc
+  description: ''
+- name: books
+  description: ''
